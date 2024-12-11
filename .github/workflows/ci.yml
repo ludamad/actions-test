@@ -39,29 +39,25 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      username: ${{ steps.compute_username.outputs.username }}
-      avm-transpiler: ${{ steps.filter.outputs.avm-transpiler }}
-      build-images: ${{ steps.filter.outputs.build-images }}
-      barretenberg: ${{ steps.filter.outputs.barretenberg }}
-      barretenberg-cpp: ${{ steps.filter.outputs.barretenberg-cpp }}
-      noir: ${{ steps.filter.outputs.noir }}
-      noir-projects: ${{ steps.filter.outputs.noir-projects }}
-      yarn-project: ${{ steps.filter.outputs.yarn-project }}
-      txe: ${{ steps.filter.outputs.txe }}
-      l1-contracts: ${{ steps.filter.outputs.l1-contracts }}
-      non-docs: ${{ steps.filter.outputs.non-docs }}
-      non-misc-ci: ${{ steps.filter.outputs.non-misc-ci }}
-      non-barretenberg-cpp: ${{ steps.filter.outputs.non-barretenberg-cpp }}
+      username: example-user
+      avm-transpiler: false
+      build-images: false
+      barretenberg: false
+      barretenberg-cpp: false
+      noir: false
+      noir-projects: false
+      yarn-project: false
+      txe: false
+      l1-contracts: false
+      non-docs: false
+      non-misc-ci: false
+      non-barretenberg-cpp: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Compute Username
-        id: compute_username
-        shell: bash
-        run: echo "username=example" >> $GITHUB_OUTPUT
       - name: Filter Paths
         id: filter
-        run: echo "All filters set to 'false' since this is a stub." >> $GITHUB_OUTPUT
+        run: echo "All filters set to 'false' since this is a stub."
 
   build-images:
     needs: [configure]
@@ -109,19 +105,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test: []
+        test: [fake]
     steps:
       - name: Echo E2E
         run: echo "Would run E2E tests here..."
 
   bench-e2e:
     needs: [configure, build, bench-test-gate]
-    if: needs.build.outputs.bench_list != '[]' && needs.configure.outputs.non-docs == 'true'
+    if: needs.configure.outputs.non-docs == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        test: []
+        test: [fake]
     steps:
       - name: Echo Bench E2E
         run: echo "Would run benchmark E2E tests here..."
@@ -287,7 +283,7 @@ jobs:
       matrix:
         test: [test-4epochs.sh]
     steps:
-      - run: echo "Would run network test: ${{ matrix.test }}..."
+      - run: 'echo "Would run network test: ${{ matrix.test }}..."'
 
   kind-smoke-test:
     needs: [configure, build]
