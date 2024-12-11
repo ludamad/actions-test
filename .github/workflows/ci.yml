@@ -39,7 +39,7 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      username: false
+      username: example-user
       avm-transpiler: false
       build-images: false
       barretenberg: false
@@ -55,13 +55,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Compute Username
-        id: compute_username
-        shell: bash
-        run: echo "username=example" >> $GITHUB_OUTPUT
       - name: Filter Paths
         id: filter
-        run: echo "All filters set to 'false' since this is a stub." >> $GITHUB_OUTPUT
+        run: echo "All filters set to 'false' since this is a stub."
 
   build-images:
     needs: [configure]
