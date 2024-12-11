@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Filter Paths
         id: filter
-        run: echo "All filters set to 'false' since this is a stub."
+        run: echo "All filters set to 'false' since this is a stub..."
 
   build-images:
     needs: [configure]
