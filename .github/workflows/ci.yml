@@ -287,7 +287,7 @@ jobs:
       matrix:
         test: [test-4epochs.sh]
     steps:
-      - run: echo "Would run network test: ${{ matrix.test }}..."
+      - run: 'echo "Would run network test: ${{ matrix.test }}..."'
 
   kind-smoke-test:
     needs: [configure, build]
