@@ -39,19 +39,19 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      username: ${{ steps.compute_username.outputs.username }}
-      avm-transpiler: ${{ steps.filter.outputs.avm-transpiler }}
-      build-images: ${{ steps.filter.outputs.build-images }}
-      barretenberg: ${{ steps.filter.outputs.barretenberg }}
-      barretenberg-cpp: ${{ steps.filter.outputs.barretenberg-cpp }}
-      noir: ${{ steps.filter.outputs.noir }}
-      noir-projects: ${{ steps.filter.outputs.noir-projects }}
-      yarn-project: ${{ steps.filter.outputs.yarn-project }}
-      txe: ${{ steps.filter.outputs.txe }}
-      l1-contracts: ${{ steps.filter.outputs.l1-contracts }}
-      non-docs: ${{ steps.filter.outputs.non-docs }}
-      non-misc-ci: ${{ steps.filter.outputs.non-misc-ci }}
-      non-barretenberg-cpp: ${{ steps.filter.outputs.non-barretenberg-cpp }}
+      username: false
+      avm-transpiler: false
+      build-images: false
+      barretenberg: false
+      barretenberg-cpp: false
+      noir: false
+      noir-projects: false
+      yarn-project: false
+      txe: false
+      l1-contracts: false
+      non-docs: false
+      non-misc-ci: false
+      non-barretenberg-cpp: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
