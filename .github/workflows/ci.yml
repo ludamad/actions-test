@@ -109,19 +109,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test: []
+        test: [fake]
     steps:
       - name: Echo E2E
         run: echo "Would run E2E tests here..."
 
   bench-e2e:
     needs: [configure, build, bench-test-gate]
-    if: needs.build.outputs.bench_list != '[]' && needs.configure.outputs.non-docs == 'true'
+    if: needs.configure.outputs.non-docs == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        test: []
+        test: [fake]
     steps:
       - name: Echo Bench E2E
         run: echo "Would run benchmark E2E tests here..."
